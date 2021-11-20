@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: helloworldAPI
+description: Provides say hello
+protocols: 
+- HTTPS
+- HTTP
+version: v1
+baseUri: https://helloworld-api-exp-dev/v1.0/
+mediaType: application/json
+documentation:
+  - !include /documentation/helloworldDoc.raml
+/helloworld: # optional resource
+  get: # HTTP method declaration
+    responses: # declare a response
+      200: # HTTP status code
+        body: # declare content of response
+          application/json: # media type
+            type: | # structural definition of a response (schema or type)
+              {
+                "title": "Hello world Response",
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            example: | # example of how a response looks
+              {
+                "message": "Hello world"
+              }
+
+  post:
+    responses:
+      200:
+        body:
+          application/json:
+          
